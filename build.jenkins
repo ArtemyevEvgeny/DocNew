@@ -2,12 +2,14 @@
 properties([disableConcurrentBuilds()])
 
 pipeline {
-    agent any
+    agent {
+    label 'master'
+           }
 
     stages {
-        stage("Hello") {
+        stage("create docker image") {
             steps {
-                echo "Hello World"
+                echo "==================== start build image ========================"
                 dir ('Docker'){
                     sh 'docker build . '
                 }
