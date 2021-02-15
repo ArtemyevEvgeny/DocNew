@@ -1,0 +1,17 @@
+#!groovy
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent any
+
+    stages {
+        stage("Hello") {
+            steps {
+                echo "Hello World"
+                dir ('Docker'){
+                    sh 'docker build . '
+                }
+            }
+        }
+    }
+}
